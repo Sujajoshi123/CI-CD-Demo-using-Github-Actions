@@ -47,8 +47,15 @@ jobs:
         name: coverage-report
         path: htmlcov
 
-    - name: Deploy to Github Pages
+    - name: Git debug
+      run: |
+        git config --list
+        git status
+        ls -la
+
+
+    - name: Deploy with PAT
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.GH_PAT }}
         publish_dir: ./htmlcov
